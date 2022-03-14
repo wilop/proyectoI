@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tico Rides</title>
+    <link rel="stylesheet" href="css/template.css">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="container">
+        <nav><a class="button" href="login.html ">Login</a></nav>
+        <header>
+            <div class="">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
+                    </a>
+                    <h1>Welcome to TicoRides.com</h1>
+                </div>
+                <h3>Search for a ride</h3>
+                <fieldset class="busqueda">
+                    <span>
+                        <label for="from">From:</label>
+                        <input id="from" type="search" placeholder="Type origin or type %" />
+                    </span>
+                    <span>
+                        <label for="to">To:</label>
+                        <input id="to" type="search" placeholder="Type destiny or type %" />
+                    </span>
+                    <span>
+                        <input class="button-light" type="submit" value="Find my Ride!" onclick="findRides()" />
+                    </span>
+
+                </fieldset>
+            </div>
+        </header>
+        <div>
+            <h3>Results for Rides that matches your criteria</h3>
+            <div class="centrar">
+                <table id="tabla-rides" class="centrar">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>
+                                </th>
+                        </tr>
+                    </thead>
+                    <tbody class="hidden">
+                        <tr>
+                            <td>yluna</td>
+                            <td>Barrio Los Angeles</td>
+                            <td>Ciudad Quesada</td>
+                            <td><a href="#" onclick="viewRide()">View</a> </td>
+
+                        </tr>
+                        <tr>
+                            <td>rbarboza</td>
+                            <td>Ciudad Quesada</td>
+                            <td>Los Angeles</td>
+                            <td><a href="#" onclick="viewRide()">View</a> </td>
+
+                        </tr>
+                        <tr>
+                            <td>yluna</td>
+                            <td>Ciudad Quesada</td>
+                            <td>San Pedro</td>
+                            <td><a href="#" onclick="viewRide()">View</a> </td>
+
+                        </tr>
+                    </tbody>
+                    <thfood>
+                    </thfood>
+                    <caption>Rides found</caption>
+                </table>
+            </div>
+        </div>
+        <div id='modal'>
+            
+        </div>
+    </div>
+    <script type="text/javascript">
+        function findRides() {
+            var from = document.getElementById('from').value;
+            var to = document.getElementById('to').value;
+            from = from.toLowerCase();
+            to = to.toLowerCase();
+
+            var myTab = document.getElementById('tabla-rides');
+            var myTr = document.getElementsByTagName('tr');
+
+            for (i = 1; i < myTr.length; i++) {
+                var myTd = myTr[i].getElementsByTagName('td');
+                from2 = myTd[1].innerText.toLowerCase();
+                to2 = myTd[2].innerText.toLowerCase();
+
+                if (from2 == from && to2 == to) {
+                    myTr[i].style.display = 'table-row';
+                } else if (to == '%' && from2 == from) {
+                    myTr[i].style.display = 'table-row';
+
+                } else if (from == '%' && to2 == to) {
+                    myTr[i].style.display = 'table-row';
+
+                } else if (from == '%' && to == '%') {
+                    myTr[i].style.display = 'table-row';
+
+                } else {
+                    myTr[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

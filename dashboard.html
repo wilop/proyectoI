@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/template.css">
+    <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="container">
+        <header id="header">
+            <div class="">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
+                    </a>
+                    <h1>TicoRides.com</h1>
+                </div>
+                <nav id="dash">
+                    <a id="dashboard-tab" class="button tab active"
+                        onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a>
+                    <a id="rides-tab" class="button tab" onclick="changeTab('rides-tab','rides')">Rides</a>
+                    <a id="settings-tab" class="button tab" onclick="changeTab('settings-tab','settings')">Settings</a>
+                </nav>
+                <div id="user">
+                    <div>
+                        <p>Welcome</p>
+                        <p>barroyo</p>
+                        <img src="/img/user.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane visible" id="dashboard">
+                    <h3>My Rides</h3>
+                    <P>
+                        <a href="#" onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a>
+                    </P>
+                    <div class="container centrar">
+                        <a class="button" onclick="addRide()">+</a>
+
+                        <table id="tabla-usr" class="centrar">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Actions</th>
+                                    <th class="tr-hidden">Description </th>
+                                    <th class="tr-hidden">Departure</th>
+                                    <th class="tr-hidden">Arrival</th>
+                                    <th class="tr-hidden">Monday</th>
+                                    <th class="tr-hidden">Tuesday</th>
+                                    <th class="tr-hidden">Wednesday</th>
+                                    <th class="tr-hidden">Thursday</th>
+                                    <th class="tr-hidden">Friday</th>
+                                    <th class="tr-hidden">Saturday</th>
+                                    <th class="tr-hidden">Sunday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Brete</td>
+                                    <td>Barrio Los Angeles</td>
+                                    <td>Ciudad Quesada</td>
+                                    <td>
+                                        <a href="#" onclick="viewRide()">View</a> -
+                                        <a href="#" onclick="editRide()">Edit</a> -
+                                        <a href="#" onclick="deleteRide()">Delete</a>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Casa</td>
+                                    <td>Ciudad Quesada</td>
+                                    <td>Los Angeles</td>
+                                    <td>
+                                        <a href="#" onclick="viewRide()">View</a> -
+                                        <a href="#" onclick="editRide()">Edit</a> -
+                                        <a href="#" onclick="deleteRide()">Delete</a>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Oficina Chepe</td>
+                                    <td>Ciudad Quesada</td>
+                                    <td>San Pedro</td>
+                                    <td>
+                                        <a href="#" onclick="viewRide()">View</a> -
+                                        <a href="#" onclick="editRide()">Edit</a> -
+                                        <a href="#" onclick="deleteRide()">Delete</a>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                            <thfood>
+                            </thfood>
+                            <caption>Your current list of Rides</caption>
+                        </table>
+
+                        <a class="button" onclick="addRide()">+</a>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="rides">
+                    <h3>Rides</h3>
+                    <P id="rides-status">
+                        <a href="#" onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a> /
+                        <a href="#" onclick="changeTab('rides-tab','rides')">Rides</a>
+                    </P>
+                    <div class="container loginform centrar">
+                        <form id="rides-form" class="loginform">
+                            <fieldset class="">
+                                <div class="">
+                                    <div class="">
+                                        <label for="ridename">Ride Name</label>
+                                        <input type="text" id="ridename" placeholder="Type the Ride Name">
+                                    </div>
+                                    <div class="form-h">
+                                        <span>
+                                            <label for="start">Start</label>
+                                            <input type="text" id="start" placeholder="Type Origin">
+                                        </span>
+                                        <span>
+                                            <label for="end">End</label>
+                                            <input type="text" id="end" placeholder="Type Destiny">
+                                        </span>
+                                    </div>
+
+
+                                    <label class="form-h" for="about">Description</label>
+                                </div>
+                                <div class="form-h">
+                                    <textarea id="description" form="rides-form" rows="5" cols="57"
+                                        placeholder="Type a short description"></textarea>
+                                </div>
+                                <div>
+                                    <hr>
+                                    <h3>When</h3>
+
+                                </div>
+                                <div class="form-h">
+                                    <span>
+                                        <label for="departure">Departure</label>
+                                        <input type="text" id="departure" placeholder="Type departure time">
+                                    </span>
+                                    <span>
+                                        <label for="arrival">Estimated Arrival</label>
+                                        <input type="text" id="arrival" placeholder="Type estimated arrival time">
+                                    </span>
+
+                                </div>
+
+                                <div class="checkbox-list-v">
+                                    <label>Select Days</label>
+                                    <span>
+                                        <input type="checkbox" name="" id="monday" value="Monday">
+                                        <label for="monday">Monday</label>
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="tuesday" value="Tuesday">
+                                        <label for="tuesday">Tuesday</label>
+
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="wednesday" value="Wednesday">
+                                        <label for="wednesday">Wednesday</label>
+
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="thursday" value="Thursday">
+                                        <label for="thursday">Thursday</label>
+
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="friday" value="Friday">
+                                        <label for="friday">Friday</label>
+
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="saturday" value="Saturday">
+                                        <label for="saturday">Saturday</label>
+
+                                    </span>
+                                    <span>
+                                        <input type="checkbox" name="" id="sunday" value="Sunday">
+                                        <label for="sunday">Sunday</label>
+
+                                    </span>
+
+                                </div>
+                                <hr />
+                                <div class="">
+                                    <input class="button-light" type="reset" value="Cancel" id="cancel-button" />
+                                    <input class="button-light" type="submit" value="Save" id="save-button"
+                                        onclick="saveRide()" />
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-pane" id="settings">
+                    <h3>Settings</h3>
+                    <P>
+                        <a href="#" onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a> /
+                        <a href="#" onclick="changeTab('settings-tab','settings')">Settings</a>
+                    </P>
+                    <div class="container loginform centrar">
+                        <form id="settings-form" class="" action="#" method="">
+                            <fieldset class="">
+
+                                <label for="fullname">Fullname</label>
+                                <input type="text" id="fullname" placeholder="Type your Fullname">
+
+                                <label for="speed">Seed Average</label>
+                                <input type="text" id="speed" placeholder="Type Average Speed">
+                                <label for="about">About Me</label>
+                                <div>
+                                    <textarea id="about" form="settings-form" rows="10" cols="50"
+                                        placeholder="Type something about you"></textarea>
+                                </div>
+
+                                <input class="button-light" type="reset" value="Cancel" id="cancel-button" />
+                                <input class="button-light" type="submit" value="Save" id="save-button" />
+                                </span>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        // Control de los paneles
+        function changeTab(tab, tabPane) {
+            var links = document.getElementsByClassName("tab");
+            var panes = document.getElementsByClassName("tab-pane");
+            for (let i = 0; i < panes.length; i++) {
+                panes[i].style.display = "none";
+                links[i].style.backgroundColor = "cadetblue";
+            }
+            // window.alert(tab);
+            document.getElementById(tab).style.backgroundColor = "lightseagreen";
+            document.getElementById(tabPane).style.display = "block";
+        }
+        var ele, tr;
+
+        function viewRide() {
+            ele = document.activeElement;
+            tr = ele.parentElement.parentElement;
+            var status = document.getElementById('rides-status');
+            var link = document.getElementById('r-status');
+            var form = document.getElementById('rides-form');
+            var inputs = form.getElementsByTagName('input');
+            var textarea = document.getElementById('description');
+            textarea.disabled = true;
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+                if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
+                    inputs[i].style.visibility = 'hidden';
+                }
+            }
+
+            if (link == null) {
+                link = document.createElement('a');
+                link.setAttribute("id", "r-status")
+            }
+            link.innerText = "/ view";
+            status.appendChild(link);
+            readData();
+            changeTab('rides-tab', 'rides')
+        }
+        function addRide() {
+            ele = document.createElement('tr');
+            tr = ele;
+            var status = document.getElementById('rides-status');
+            var link = document.getElementById('r-status');
+            var myTab = document.getElementById('tabla-usr');
+            var myTr = myTab.getElementsByTagName('tr');
+            var form = document.getElementById('rides-form');
+            var inputs = form.getElementsByTagName('input');
+            var textarea = document.getElementById('description');
+
+            ele.innerHTML = "<tr></tr>";
+            myTab.appendChild(ele);
+            textarea.disabled = false;
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = false;
+                if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
+                    inputs[i].style.visibility = 'visible';
+                }
+            }
+            if (link == null) {
+                link = document.createElement('a');
+                link.setAttribute("id", "r-status")
+            }
+            link.innerText = "/ add";
+            status.appendChild(link);
+            clearFormRides();
+            changeTab('rides-tab', 'rides');
+
+        }
+        function editRide() {
+            ele = document.activeElement;
+            tr = ele.parentElement.parentElement;
+            var status = document.getElementById('rides-status');
+            var link = document.getElementById('r-status');
+            var form = document.getElementById('rides-form');
+            var inputs = form.getElementsByTagName('input');
+            var textarea = document.getElementById('description');
+            textarea.disabled = false;
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = false;
+                if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
+                    inputs[i].style.visibility = 'visible';
+                }
+            }
+
+            if (link == null) {
+                link = document.createElement('a');
+                link.setAttribute("id", "r-status");
+            }
+            link.innerText = "/ edit";
+            status.appendChild(link);
+            readData();
+            changeTab('rides-tab', 'rides');
+
+        }
+        function deleteRide() {
+            ele = document.activeElement;
+            tr = ele.parentElement.parentElement;
+            var status = document.getElementById('rides-status');
+            var link = document.getElementById('r-status');
+            var myTab = document.getElementById('tabla-usr');
+            var myTr = myTab.getElementsByTagName('tr');
+
+
+            for (let i = 0; i < myTr.length; i++) {
+                if (myTr[i] == tr) {
+                    myTr[i].innerHTML = "";
+
+                }
+            }
+
+            if (link == null) {
+                link = document.createElement('a');
+                link.setAttribute("id", "r-status")
+            }
+            link.innerText = "/ delete";
+            status.appendChild(link);
+        }
+        function saveRide() {
+            var myTab = document.getElementById('tabla-usr');
+            var myTr = myTab.getElementsByTagName('tr');
+
+            for (let i = 0; i < myTr.length; i++) {
+                if (myTr[i] == tr) {
+                    myTr[i].innerHTML = "<tr> " +
+                        "<td>" + document.getElementById('ridename').value + "</td>" +
+                        "<td>" + document.getElementById('start').value + "</td>" +
+                        "<td>" + document.getElementById('end').value + "</td>" +
+                        "<td> " +
+                        "<a href='#' onclick='viewRide()'>View</a> - " +
+                        "<a href='#' onclick='editRide()'>Edit</a> - " +
+                        "<a href='#' onclick='deleteRide(document.activeElement)'>Delete</a>" +
+                        "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('description').value + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('departure').value + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('arrival').value + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('monday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('tuesday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('wednesday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('thursday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('friday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('saturday').checked + "</td>" +
+                        "<td class='tr-hidden'>" + document.getElementById('sunday').checked + "</td>" +
+
+                        " </tr>";
+
+                }
+            }
+            changeTab('dashboard-tab', 'dashboard');
+
+        }
+        function readData() {
+            clearFormRides();
+            if (tr != null) {
+                var myTab = document.getElementById('tabla-usr');
+                var myTr = myTab.getElementsByTagName('tr');
+                window.alert('tr: ' + tr.innerHTML);
+                for (let i = 0; i < myTr.length; i++) {
+                    if (myTr[i] == tr) {
+                        var myTd = myTr[i].getElementsByTagName('td');
+                        // let myTd = myTr[i];
+                        window.alert(myTr[i].innerHTML);
+                        window.alert(myTd[0].innerText);
+                        document.getElementById('ridename').value = myTd[0].innerText;
+                        document.getElementById('start').value = myTd[1].innerText;
+                        document.getElementById('end').value = myTd[2].innerText;
+                        // "<td> " +
+                        // "<a href='#' onclick='viewRide()'>View</a> - " +
+                        // "<a href='#' onclick='editRide()'>Edit</a> - " +
+                        // "<a href='#' onclick='deleteRide(document.activeElement)'>Delete</a>" +
+                        // "</td>" +
+                        document.getElementById('description').value = myTd[4].innerText;
+                        document.getElementById('departure').value = myTd[5].innerText;
+                        document.getElementById('arrival').value = myTd[6].innerText;
+                        document.getElementById('monday').checked = myTd[7].innerText == 'true' ? true : false;
+                        document.getElementById('tuesday').checked = myTd[8].innerText == 'true' ? true : false;
+                        document.getElementById('wednesday').checked = myTd[9].innerText == 'true' ? true : false;
+                        document.getElementById('thursday').checked = myTd[10].innerText == 'true' ? true : false;
+                        document.getElementById('friday').checked = myTd[11].innerText == 'true' ? true : false;
+                        document.getElementById('saturday').checked = myTd[12].innerText == 'true' ? true : false;
+                        document.getElementById('sunday').checked = myTd[13].innerText == 'true' ? true : false;
+                    }
+                }
+            }
+        }
+
+        function clearFormRides() {
+            var form = document.getElementById('rides-form');
+            var inputs = form.getElementsByTagName('input');
+            var textarea = document.getElementById('description');
+            textarea.value = "";
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
+
+                } else if (inputs[i].type == 'checkbox') {
+                    inputs[i].checked = false;
+                }
+                else {
+                    inputs[i].value = "";
+
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

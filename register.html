@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="css/template.css">
+  <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class="form-contact-info centrar loginform">
+    <div class="error_msg" id="error_msg"></div>
+    <form action="login.html">
+      <div class="logo centrar">
+        <a href="index.html">
+          <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
+        </a>
+        <h1>TicoRides.com</h1>
+      </div>
+      <fieldset class="">
+        <label>First Name</label>
+        <input type="text" name="firstname" value="" placeholder="Type your firstname" class="required"
+          id="firstname" />
+        <label>Last Name</label>
+        <input type="text" name="lastname" value="" placeholder="Type your lastname" class="required" id="lastname" />
+        <label>Phone</label>
+        <input type="tel" pattern="[0-9]{4} [0-9]{4}" data-mask="0000 000" minlength="9" maxlength="9" name="phone"
+          value="" placeholder="Type your phone xxxx xxxx" class="required" id="phone" />
+        <label>Username</label>
+        <input type="text" name="username" value="" placeholder="Type your username" class="required" id="username" />
+        <label>Password</label>
+        <input type="password" name="password" value="" placeholder="Type your password" class="required"
+          id="password" />
+        <label>Repeat Password</label>
+        <input type="password" name="password" value="" placeholder="Repeat your password" class="required"
+          id="re password" />
+        <p>Already an user? <a href="login.html">Login Here</a></p>
+        <input class="button-light" type="reset" value="Cancel" id="cancel-button" />
+        <input class="button-light" type="submit" value="Register" id="register-button" />
+      </fieldset>
+    </form>
+  </div>
+</body>
+
+</html>
