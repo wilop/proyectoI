@@ -37,6 +37,7 @@ header{
 	padding-right: 5px;
 
 }
+
 .checkbox-list-v{
 	display:flex;
 	justify-content: center;
@@ -45,10 +46,6 @@ header{
 	border-radius: 10px;
 
 }
-/* div .loginform{
-	display: flex;
-	flex-wrap: wrap;
-} */
 
 fieldset {
 	border-radius: 5px;
@@ -92,17 +89,6 @@ select {
 	margin-bottom: 20px;
 }
 
-/* .boton {
-	color: black;
-	padding: 2px 5px 2px 5px;
-	text-decoration: none;
-	cursor:pointer;
-	border: 1px solid gray;
-	border-radius: 5px;
-	background-color: cadetblue;
-	font-family: 'Rock Salt', 'cursive';
-	letter-spacing: 5px;
-} */
 .logo{
 	display:flexbox;
 	justify-content: center;
@@ -119,7 +105,6 @@ select {
 	align-content: center;
 }
 
-/*index.html*/
 .right{
 	display:flex;
 	justify-content: flex-end;
@@ -205,6 +190,7 @@ select {
 	display:block;
 }
 
+/*Table*/
 table {
 	table-layout:auto;
 	width: 100%;
@@ -250,6 +236,8 @@ caption {
 	text-align: right;
 	letter-spacing: 1px;
 }
+
+/* Modal */
 iframe{
 	display:none;
 }
