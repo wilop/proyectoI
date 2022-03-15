@@ -120,7 +120,7 @@ select {
 }
 
 /*index.html*/
-nav{
+.right{
 	display:flex;
 	justify-content: flex-end;
 }
@@ -253,10 +253,7 @@ caption {
 iframe{
 	display:none;
 }
-.modal-button{
-	display:flex;
-	justify-content: flex-end;
-}
+
 .modal{
 	display: none;
 	position: fixed; 

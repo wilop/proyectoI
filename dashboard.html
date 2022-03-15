@@ -20,10 +20,10 @@
                     </a>
                     <h1>TicoRides.com</h1>
                 </div>
-                <nav id="dash">
+                <nav id="dash" class="right">
                     <a id="dashboard-tab" class="button tab active"
                         onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a>
-                    <a id="rides-tab" class="button tab" onclick="changeTab('rides-tab','rides')">Rides</a>
+                    <a id="rides-tab" class="button tab" onclick="addRide()">Rides</a>
                     <a id="settings-tab" class="button tab" onclick="changeTab('settings-tab','settings')">Settings</a>
                 </nav>
                 <div id="user">
@@ -45,7 +45,7 @@
                         <a href="#" onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a>
                     </P>
                     <div class="container centrar">
-                        <a class="button" onclick="addRide()">+</a>
+                        <!-- <a class="button" onclick="addRide()">Add Ride</a> -->
 
                         <table id="tabla-usr" class="centrar">
                             <thead>
@@ -105,16 +105,16 @@
                             </thfood>
                             <caption>Your current list of Rides</caption>
                         </table>
-
-                        <a class="button" onclick="addRide()">+</a>
-
+                        <div class="right">
+                            <a class="button" onclick="addRide()">Add Ride</a>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="rides">
                     <h3>Rides</h3>
                     <P id="rides-status">
                         <a href="#" onclick="changeTab('dashboard-tab','dashboard')">Dashboard</a> /
-                        <a href="#" onclick="changeTab('rides-tab','rides')">Rides</a>
+                        <a href="#" onclick="addRide()">Rides</a>
                     </P>
                     <div class="container loginform centrar">
                         <form id="rides-form" class="loginform">
