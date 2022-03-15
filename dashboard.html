@@ -396,13 +396,13 @@
             if (tr != null) {
                 var myTab = document.getElementById('tabla-usr');
                 var myTr = myTab.getElementsByTagName('tr');
-                window.alert('tr: ' + tr.innerHTML);
+                // window.alert('tr: ' + tr.innerHTML);
                 for (let i = 0; i < myTr.length; i++) {
                     if (myTr[i] == tr) {
                         var myTd = myTr[i].getElementsByTagName('td');
                         // let myTd = myTr[i];
-                        window.alert(myTr[i].innerHTML);
-                        window.alert(myTd[0].innerText);
+                        // window.alert(myTr[i].innerHTML);
+                        // window.alert(myTd[0].innerText);
                         document.getElementById('ridename').value = myTd[0].innerText;
                         document.getElementById('start').value = myTd[1].innerText;
                         document.getElementById('end').value = myTd[2].innerText;
