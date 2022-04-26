@@ -1,0 +1,256 @@
+h1 {
+	text-align: center;
+	font-variant: small-caps;
+}
+
+h2 {
+	text-align: center;
+	font-family: 'Times New Roman', Times, serif;
+}
+body{
+	padding-right: 5%;
+	padding-left: 5%;  
+}
+header{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.container{
+	padding: 5%;
+}
+.loginform{
+	display: grid;
+	justify-content: center;
+	align-content: space-between;
+	flex-direction: column;
+	font-family: 'Rock Salt', 'cursive';
+
+}
+.form-h{
+	display:flex;
+	justify-content: flex-start;
+	flex-direction:row;
+	border-radius: 10px;
+	font-family: 'Rock Salt', 'cursive';
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+.checkbox-list-v{
+	display:flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	border-radius: 10px;
+
+}
+
+fieldset {
+	border-radius: 5px;
+	border-style: hidden;
+	background-color: cadetblue;
+}
+
+fieldset legend {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+label {
+	font-weight: bold;
+	display: inline-block;
+}
+.busqueda span{
+	padding-right: 5%;
+	font-family: 'Rock Salt', 'cursive';
+
+} 
+
+input[type="date"],
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+	display: block;
+	height: 20px;
+	width: 210px;
+	margin-bottom: 20px;
+}
+
+
+p>input {
+	display: inline;
+}
+
+select {
+	display: block;
+	margin-bottom: 20px;
+}
+
+.logo{
+	display:flexbox;
+	justify-content: center;
+	text-align: center;
+	font-family: 'Rock Salt';
+	font-weight: bolder;
+	font-style: italic;
+	letter-spacing: 5px;
+	text-shadow:0 0 5px rgba(0, 255, 255,0.5), 0 0 10px rgba(0, 0, 0,1);
+}
+.centrar {
+	display:flexbox;
+	justify-content: center;
+	align-content: center;
+}
+
+.right{
+	display:flex;
+	justify-content: flex-end;
+}
+#header nav{
+	display:flexbox;
+	justify-content: flex-start;
+	align-content: center;
+}
+#user div{
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-content:center;
+	 
+}
+#user img{
+	max-width: 3em ;
+	max-height: 3em ;
+}
+#user p{
+	padding-right: 10px;
+	font-weight: bolder;
+	color:orangered;
+}
+#user p:first-child{
+	color:black;
+}
+
+.button{
+	color: black;
+	padding: 2px 5px 2px 5px;
+	text-decoration: none;
+	cursor:pointer;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color: cadetblue;
+	font-family: 'Rock Salt', 'cursive';
+	letter-spacing: 5px;
+}
+.button:link{
+	color: lightblue;
+}
+.button:hover{
+	background-color:lightseagreen;
+}
+
+.button-light {
+	color: black;
+	padding: 2px 5px 2px 5px;
+	text-decoration: none;
+	cursor:pointer;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color:lightblue;
+	font-family: 'Rock Salt', 'cursive';
+	letter-spacing: 5px;
+}
+.button-light:link{
+	color: lightblue;
+}
+.button-light:hover{
+	background-color:lightseagreen;
+}
+.active{	
+	background-color: lightseagreen;
+
+}
+.tab{
+	border-radius: 0;
+} 
+#dashboard-tab{
+ 	border-radius: 10em 0 0 10em;
+}
+#settings-tab{
+	border-radius: 0 10em 10em 0;
+}
+.tab-pane{
+	display:flex;
+	display:none;
+}
+.visible{
+	display:block;
+}
+
+/*Table*/
+table {
+	table-layout:auto;
+	width: 100%;
+	border-collapse: collapse;
+	border: 3px solid seagreen;
+	border-radius:5px;
+	background-color: lightseagreen;
+  }
+thead, tfoot {
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+  
+thead th, tfoot th {
+	font-family: 'Rock Salt', 'cursive';
+  }
+  
+tbody tr:nth-child(odd) {
+	background-color: lightblue;
+}
+  
+tbody tr:nth-child(even) {
+	background-color: lightseagreen;
+}
+.hidden tr {
+	display: none;
+	
+}
+.tr-hidden{
+	display: none;
+}
+th{
+	border: 1px solid lightgrey;
+	border-collapse: collapse;
+}
+  
+caption {
+	font-family: 'Rock Salt', cursive;
+	padding: 20px;
+	font-style: italic;
+	caption-side: bottom;
+	color: #666;
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+/* Modal */
+iframe{
+	display:none;
+}
+
+.modal{
+	display: none;
+	position: fixed; 
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,255,255);
+	background-color: rgba(0,0,0,0.7);
+}
