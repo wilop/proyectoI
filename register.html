@@ -6,43 +6,107 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration</title>
-  <link rel="stylesheet" href="css/template.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
   <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/template2.css">
 </head>
 
 <body>
-  <div class="form-contact-info centrar loginform">
-    <div class="error_msg" id="error_msg"></div>
-    <form action="login.html">
-      <div class="logo centrar">
+  <section class="hero">
+    <div class="hero-body has-text-centered logo">
+      <div class="container">
         <a href="index.html">
           <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
         </a>
-        <h1>TicoRides.com</h1>
+        <h1 class="title"> TicoRides.com</h1>
       </div>
-      <fieldset class="">
-        <label>First Name</label>
-        <input type="text" name="firstname" value="" placeholder="Type your firstname" class="required"
-          id="firstname" />
-        <label>Last Name</label>
-        <input type="text" name="lastname" value="" placeholder="Type your lastname" class="required" id="lastname" />
-        <label>Phone</label>
-        <input type="tel" pattern="[0-9]{4} [0-9]{4}" data-mask="0000 000" minlength="9" maxlength="9" name="phone"
-          value="" placeholder="Type your phone xxxx xxxx" class="required" id="phone" />
-        <label>Username</label>
-        <input type="text" name="username" value="" placeholder="Type your username" class="required" id="username" />
-        <label>Password</label>
-        <input type="password" name="password" value="" placeholder="Type your password" class="required"
-          id="password" />
-        <label>Repeat Password</label>
-        <input type="password" name="password" value="" placeholder="Repeat your password" class="required"
-          id="re password" />
-        <p>Already an user? <a href="login.html">Login Here</a></p>
-        <input class="button-light" type="reset" value="Cancel" id="cancel-button" />
-        <input class="button-light" type="submit" value="Register" id="register-button" />
-      </fieldset>
-    </form>
-  </div>
+    </div>
+  </section>
+
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <form class="box" action="login.html">
+          <!-- <fieldset class=""> -->
+          <div class="field">
+            <label class="label font">First Name</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="text" name="firstname" value="" placeholder="Type your firstname"
+                id="firstname" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+            <p class="help is-success">This username is available</p>
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="text" name="lastname" value="" placeholder="Type your lastname"
+                id="lastname" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="tel" pattern="[0-9]{4} [0-9]{4}" data-mask="0000 000" minlength="9"
+                maxlength="9" name="phone" value="" placeholder="Type your phone xxxx xxxx" id="phone" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label>Username</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="text" name="username" value="" placeholder="Type your username"
+                id="username" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="password" name="password" value="" placeholder="Type your password"
+                id="password" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <label>Repeat Password</label>
+            <p class="control has-icon has-icon-right">
+              <input class="input is-success" type="password" name="password" value=""
+                placeholder="Repeat your password" id="re password" />
+              <span class="icon is-small">
+                <i class="fa fa-check"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field font is-grouped">
+            <p>Already an User? <a href="login.html">Login Here</a></p>
+          </div>
+          <div class="field is-grouped">
+            <p class="control">
+              <input class="button font is-primary" type="reset" value="Cancel">
+
+            </p>
+            <p class="control">
+              <input class="button font is-primary" type="submit" value="Login">
+
+            </p>
+          </div>
+          <!-- </fieldset> -->
+        </form>
+      </div>
+    </div>
+  </nav>
 </body>
 
 </html>
