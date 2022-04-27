@@ -6,50 +6,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tico Rides</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css"/>
-    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/template.css">
 </head>
 
 <body>
     <section class="hero">
         <div class="hero-body has-text-centered logo">
-          <div class="container">
-            <a href="index.html">
-              <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
-            </a>
-            <h1 class="title">Welcome to TicoRides.com</h1>
-          </div>
-        </div>
-      </section>
-    <div class="container">
-        <div class="right"><a class="button" href="login.html ">Login</a></div>
-        <header>
-            <div class="">
-                
-                <h3>Search for a ride</h3>
-                <fieldset class="busqueda">
-                    <span>
-                        <label for="from">From:</label>
-                        <input id="from" type="search" placeholder="Type origin or type %" />
-                    </span>
-                    <span>
-                        <label for="to">To:</label>
-                        <input id="to" type="search" placeholder="Type destiny or type %" />
-                    </span>
-                    <span>
-                        <input class="button-light" type="submit" value="Find my Ride!" onclick="findRides()" />
-                    </span>
-
-                </fieldset>
+            <div class="container">
+                <div class="field font has-text-right"><a class="button is-primary" href="login.html ">Login</a></div>
+                <a href="index.html">
+                    <img src="img/logo3.jpg" alt="Welcome to Tico Rides!">
+                </a>
+                <h1 class="title">Welcome to TicoRides.com</h1>
             </div>
-        </header>
+            
+        </div>
+    </section>
+    <div class="container">
+        <div class="box">
+
+            <h3 class="subtitle">Search for a ride</h3>
+            <div class="field is-horizontal">
+                <label class="label font" for="from">From:</label>
+                <div class="field-body">
+                    <div class="field has-addons">
+                        <p class="control has-icon has-icon-right is-expanded">
+                            <input class="input" id="from" type="search" placeholder="Type origin or type %" />
+                            <span class="icon is-small">
+                                <i class="fa fa-map"></i>
+                            </span>
+                        </p>
+                        <p class="control ">
+                            <a class="button is-info">
+                                Search
+                            </a>
+
+                        </p>
+                    </div>
+                    <label class="label font" for="to">To:</label>
+                    <div class="field has-addons">
+                        <p class="control has-icon has-icon-right is-expanded">
+                            <input class="input" id="to" type="search" placeholder="Type destiny or type %" />
+                            <span class="icon is-small">
+                                <i class="fa fa-map"></i>
+                            </span>
+                        </p>
+                        <p class="control ">
+                            <a class="button is-info">
+                                Search
+                            </a>
+
+                        </p>
+                    </div class="">
+                    <input class="button font is-primary" type="submit" value="Find my Ride!" onclick="findRides()" />
+                </div>
+
+            </div>
+        </div>
         <div>
-            <h3>Results for Rides that matches your criteria</h3>
-            <div class="centrar">
-                <table id="tabla-rides" class="centrar">
-                    <thead>
-                        <tr>
+            <h3 class="subtitle">Results for Rides that matches your criteria</h3>
+            <div class=>
+                <table id="tabla-rides" class="table is-primary is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead class="font thead">
+                        <tr class="">
                             <th>User</th>
                             <th>Start</th>
                             <th>End</th>
@@ -57,7 +79,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="hidden">
+                    <tbody class="is-hidden">
                         <tr>
                             <td>yluna</td>
                             <td>Barrio Los Angeles</td>
@@ -82,20 +104,20 @@
                     </tbody>
                     <thfood>
                     </thfood>
-                    <caption>Rides found</caption>
+                    <caption class="font">Rides found</caption>
                 </table>
             </div>
         </div>
-        <div>
-            <iframe id="frame" src="/dashboard.html"> </iframe>
+        <div class="">
+            <iframe class="is-hidden" id="frame" src="/dashboard.html"> </iframe>
             <div id="modal" class="modal loginform">
                 <div id="modalContent"></div>
                 <div id="modalButton" class="right"></div>
             </div>
         </div>
-    
+
     </div>
-    
+
     <script src="/js/index.js" type="text/javascript"></script>
 </body>
 

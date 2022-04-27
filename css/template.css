@@ -12,3 +12,8 @@
 form{
     background-color: cadetblue;
 }
+caption{
+	caption-side: bottom;
+	text-align: right;
+	padding: 20px;
+}
