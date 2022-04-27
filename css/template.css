@@ -9,8 +9,11 @@
 .font{
     font-family: 'Rock Salt', 'cursive';
 }
-form{
-    background-color: cadetblue;
+label{
+    font-family: 'Rock Salt', 'cursive';
+}
+.button{
+    font-family: 'Rock Salt', 'cursive';
 }
 caption{
 	caption-side: bottom;

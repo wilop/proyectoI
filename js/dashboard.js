@@ -1,14 +1,14 @@
 // Control de los paneles
 function changeTab(tab, tabPane) {
     var links = document.getElementsByClassName("tab");
-    var panes = document.getElementsByClassName("tab-pane");
+    var panes = document.getElementsByClassName("tab-panel");
     for (let i = 0; i < panes.length; i++) {
-        panes[i].style.display = "none";
-        links[i].style.backgroundColor = "cadetblue";
+        panes[i].classList.add("is-hidden");
+        links[i].classList.remove("is-active");
     }
     // window.alert(tab);
-    document.getElementById(tab).style.backgroundColor = "lightseagreen";
-    document.getElementById(tabPane).style.display = "block";
+    document.getElementById(tab).classList.add("is-active");
+    document.getElementById(tabPane).classList.remove("is-hidden");
 }
 var ele, tr;
 
@@ -24,7 +24,7 @@ function viewRide() {
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].disabled = true;
         if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
-            inputs[i].style.visibility = 'hidden';
+            inputs[i].classList.add("is-hidden");
         }
     }
 
@@ -54,7 +54,7 @@ function addRide() {
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].disabled = false;
         if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
-            inputs[i].style.visibility = 'visible';
+            inputs[i].classList.remove("is-hidden");
         }
     }
     if (link == null) {
@@ -79,7 +79,7 @@ function editRide() {
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].disabled = false;
         if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
-            inputs[i].style.visibility = 'visible';
+            inputs[i].classList.remove("is-hidden");
         }
     }
 
@@ -97,15 +97,19 @@ function deleteRide() {
     ele = document.activeElement;
     tr = ele.parentElement.parentElement;
     var status = document.getElementById('rides-status');
+    var modal = document.getElementById('modal');
+    var mBody = document.getElementById('modal-body');
     var link = document.getElementById('r-status');
     var myTab = document.getElementById('tabla-usr');
     var myTr = myTab.getElementsByTagName('tr');
-
-
+    
+    
+    
     for (let i = 0; i < myTr.length; i++) {
         if (myTr[i] == tr) {
-            myTr[i].innerHTML = "";
-
+            var myTd = myTr[i].getElementsByTagName('td');
+            modal.classList.add("is-active");
+            mBody.innerHTML="<p>" +"Name: "+ myTd[0].innerText + "</p><br><p> Start: "+myTd[1].innerText+"</p><p> End: "+myTd[2].innerText+"</p>";
         }
     }
 
@@ -115,6 +119,22 @@ function deleteRide() {
     }
     link.innerText = "/ delete";
     status.appendChild(link);
+}
+function closeModal() {
+    var modal = document.getElementById('modal');
+    modal.classList.remove("is-active");
+}
+function deleteThisRide() {
+    var myTab = document.getElementById('tabla-usr');
+    var myTr = myTab.getElementsByTagName('tr');
+    var modal = document.getElementById('modal');
+    modal.classList.remove("is-active");
+    for (let i = 0; i < myTr.length; i++) {
+        if (myTr[i] == tr) {
+            modal.classList.remove("is-active");
+            myTr[i].innerHTML = "";
+        }
+    }
 }
 function saveRide() {
     var myTab = document.getElementById('tabla-usr');
@@ -131,16 +151,16 @@ function saveRide() {
                 "<a href='#' onclick='editRide()'>Edit</a> - " +
                 "<a href='#' onclick='deleteRide(document.activeElement)'>Delete</a>" +
                 "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('description').value + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('departure').value + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('arrival').value + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('monday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('tuesday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('wednesday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('thursday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('friday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('saturday').checked + "</td>" +
-                "<td class='tr-hidden'>" + document.getElementById('sunday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('description').value + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('departure').value + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('arrival').value + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('monday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('tuesday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('wednesday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('thursday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('friday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('saturday').checked + "</td>" +
+                "<td class='is-hidden'>" + document.getElementById('sunday').checked + "</td>" +
 
                 " </tr>";
 
