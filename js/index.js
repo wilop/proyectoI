@@ -1,3 +1,8 @@
+var closebtn;
+var ele, tr;
+
+var rides = new Array();
+
 function findRides() {
     var from = document.getElementById('from').value;
     var to = document.getElementById('to').value;
@@ -5,7 +10,7 @@ function findRides() {
     to = to.toLowerCase();
 
     var myTab = document.getElementById('tabla-rides');
-    var myTr = document.getElementsByTagName('tr');
+    var myTr = myTab.getElementsByTagName('tr');
 
     for (i = 1; i < myTr.length; i++) {
         var myTd = myTr[i].getElementsByTagName('td');
@@ -13,24 +18,21 @@ function findRides() {
         to2 = myTd[2].innerText.toLowerCase();
 
         if (from2 == from && to2 == to) {
-            myTr[i].style.display = 'table-row';
+            myTr[i].classList.remove("is-hidden");
         } else if (to == '%' && from2 == from) {
-            myTr[i].style.display = 'table-row';
+            myTr[i].classList.remove("is-hidden");
 
         } else if (from == '%' && to2 == to) {
-            myTr[i].style.display = 'table-row';
+            myTr[i].classList.remove("is-hidden");
 
         } else if (from == '%' && to == '%') {
-            myTr[i].style.display = 'table-row';
+            myTr[i].classList.remove("is-hidden");
 
         } else {
-            myTr[i].style.display = 'none';
+            // myTr[i].classList.add("is-hidden");
         }
     }
 }
-
-var closebtn;
-var ele, tr;
 
 function viewRide() {
     ele = document.activeElement;
@@ -40,10 +42,10 @@ function viewRide() {
     var modalButton = document.getElementById('modalButton');
     var frame = document.getElementById('frame');
     closebtn = document.createElement('button');
-    closebtn.classList.add('button-light');
+    closebtn.classList.add('button');
     closebtn.innerText = 'Close';
     closebtn.onclick = function (e) {
-        modal.style.display = 'none';
+        modal.classList.add("is-hidden");
         modalContent.innerHTML = "";
         modalButton.innerHTML = "";
     };
@@ -72,11 +74,60 @@ window.onclick = function (event) {
     }
 }
 
+function loadRidesFromStorage() {
+    if (typeof (Storage !== "undefined")) {
+        var registro = JSON.parse(localStorage.getItem("rides"));
+        if (registro != null) {
+            for (let i = 0; i < registro.length; i++) {
+                var ride = registro[i];
+                rides[i] = ride;
+            }
+        }
+
+
+    }
+    loadRideInTable();
+}
+
+function loadRideInTable() {
+    if (rides != null && rides.length > 0) {
+        var myTable = document.getElementById('tabla-rides');
+        var myTableBody = myTable.getElementsByTagName('tbody')[0];
+        for (let i = 0; i < rides.length; i++) {
+            var ride = userRides[i];
+            alert(ride["ridename"]);
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<tr> " +
+                "<td>" + ride["ridename"] + "</td>" +
+                "<td>" + ride["start"] + "</td>" +
+                "<td>" + ride["end"] + "</td>" +
+                "<td> " +
+                "<a href='#' onclick='viewRide()'>View</a> - " +
+                "</td>" +
+                "<td class='is-hidden'>" + ride["description"] + "</td>" +
+                "<td class='is-hidden'>" + ride["departure"] + "</td>" +
+                "<td class='is-hidden'>" + ride["arrival"] + "</td>" +
+                "<td class='is-hidden'>" + ride["monday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["tuesday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["wednesday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["thursday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["friday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["saturday"] + "</td>" +
+                "<td class='is-hidden'>" + ride["sunday"] + "</td>" +
+                "<td class=''>" + ride["username"] + "</td>" +
+
+                " </tr>";
+            myTableBody.appendChild(tr);
+        }
+
+    }
+}
+
+
 function readData() {
     if (tr != null) {
         var myTab = document.getElementById('tabla-rides');
         var myTr = myTab.getElementsByTagName('tr');
-        // window.alert('tr: ' + tr.innerHTML);
         for (let i = 0; i < myTr.length; i++) {
             if (myTr[i] == tr) {
                 var myTd = myTr[i].getElementsByTagName('td');

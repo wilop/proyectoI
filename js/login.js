@@ -50,7 +50,7 @@ function cargarUsuarios() {
         var registro = JSON.parse(localStorage.getItem("users"));
         if (registro != null) {
             for (let i = 0; i < registro.length; i++) {
-                users[0] = registro[i];
+                users[i] = registro[i];
             }
         }
 

@@ -22,6 +22,7 @@ function loadCurrentUser() {
         if (registro != null) {
             currentUser = registro;
             document.getElementById("user").innerText = currentUser["username"];
+            loadRidesFromStorage();
         }
 
     }
@@ -177,7 +178,7 @@ function saveRide() {
                 "<td class='is-hidden'>" + document.getElementById('friday').checked + "</td>" +
                 "<td class='is-hidden'>" + document.getElementById('saturday').checked + "</td>" +
                 "<td class='is-hidden'>" + document.getElementById('sunday').checked + "</td>" +
-                "<td class='is-hidden'>" + currentUser + "</td>" +
+                "<td class='is-hidden'>" + currentUser["username"] + "</td>" +
 
                 " </tr>";
             saveRidesToLocalStorage(myTr[i]);
@@ -189,11 +190,10 @@ function saveRide() {
 }
 function saveRidesToLocalStorage(ride) {
     var myRide = ride.getElementsByTagName('td');
-    alert(ride);
 
-    var ride = {
+    var _ride = {
         ridename: myRide[0].innerText,
-        star: myRide[1].innerText,
+        start: myRide[1].innerText,
         end: myRide[2].innerText,
         // "<td> " +
         // "<a href='#' onclick='viewRide()'>View</a> - " +
@@ -209,12 +209,12 @@ function saveRidesToLocalStorage(ride) {
         thursday: myRide[10].innerText == 'true' ? true : false,
         friday: myRide[11].innerText == 'true' ? true : false,
         saturday: myRide[12].innerText == 'true' ? true : false,
-        dsunday: myRide[13].innerText == 'true' ? true : false,
-        user: myRide[14].innerText == currentUser["username"],
+        sunday: myRide[13].innerText == 'true' ? true : false,
+        username: currentUser["username"],
 
     };
     if (typeof (Storage !== "undefined")) {
-        var valor = myRide;
+        var valor = _ride;
         var resgistro = JSON.parse(localStorage.getItem("rides"));
         var arreglo = new Array();
         if (resgistro == null) {
@@ -223,22 +223,74 @@ function saveRidesToLocalStorage(ride) {
             arreglo = resgistro;
             arreglo[arreglo.length] = valor;
         }
+        localStorage.removeItem("rides",JSON.stringify(registro));
         localStorage.setItem("rides", JSON.stringify(arreglo));
-        userRides.push(myRide);
+
+        userRides.push(_ride);
     }
 }
+function loadRidesFromStorage() {
+    if (typeof (Storage !== "undefined")) {
+        var registro = JSON.parse(localStorage.getItem("rides"));
+        if (registro != null) {
+            let y = 0;
+            for (let i = 0; i < registro.length; i++) {
+                var ride = registro[i];
+                if (ride["username"] == currentUser["username"]) {
+                    userRides[y] = registro[i];
+                    y++;
+                }
+            }
+        }
+
+    }
+    loadRideInTable();
+}
+
+function loadRideInTable() {
+    if (userRides != null && userRides.length > 0) {
+        var myTable = document.getElementById('tabla-usr');
+        var myTableBody = myTable.getElementsByTagName('tbody')[0];
+        for (let i = 0; i < userRides.length; i++) {
+            var ride = userRides[i];
+            alert(ride["ridename"]);
+            var tr =document.createElement("tr");
+            tr.innerHTML="<tr> " +
+            "<td>" + ride["ridename"]+ "</td>" +
+            "<td>" + ride["start"] + "</td>" +
+            "<td>" + ride["end"] + "</td>" +
+            "<td> " +
+            "<a href='#' onclick='viewRide()'>View</a> - " +
+            "<a href='#' onclick='editRide()'>Edit</a> - " +
+            "<a href='#' onclick='deleteRide(document.activeElement)'>Delete</a>" +
+            "</td>" +
+            "<td class='is-hidden'>" + ride["description"]+ "</td>" +
+            "<td class='is-hidden'>" + ride["departure"] + "</td>" +
+            "<td class='is-hidden'>" + ride["arrival"] + "</td>" +
+            "<td class='is-hidden'>" + ride["monday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["tuesday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["wednesday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["thursday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["friday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["saturday"] + "</td>" +
+            "<td class='is-hidden'>" + ride["sunday"]+ "</td>" +
+            "<td class='is-hidden'>" + ride["username"] + "</td>" +
+
+            " </tr>";
+        myTableBody.appendChild(tr);
+        } 
+
+    }
+}
+
 function readData() {
     clearFormRides();
     if (tr != null) {
         var myTab = document.getElementById('tabla-usr');
         var myTr = myTab.getElementsByTagName('tr');
-        // window.alert('tr: ' + tr.innerHTML);
         for (let i = 0; i < myTr.length; i++) {
             if (myTr[i] == tr) {
                 var myTd = myTr[i].getElementsByTagName('td');
-                // let myTd = myTr[i];
-                // window.alert(myTr[i].innerHTML);
-                // window.alert(myTd[0].innerText);
                 document.getElementById('ridename').value = myTd[0].innerText;
                 document.getElementById('start').value = myTd[1].innerText;
                 document.getElementById('end').value = myTd[2].innerText;
@@ -257,9 +309,7 @@ function readData() {
                 document.getElementById('friday').checked = myTd[11].innerText == 'true' ? true : false;
                 document.getElementById('saturday').checked = myTd[12].innerText == 'true' ? true : false;
                 document.getElementById('sunday').checked = myTd[13].innerText == 'true' ? true : false;
-                document.getElementById('user').checked = myTd[14].innerText == 'true' ? true : false;
-
-
+                document.getElementById('user').checked = myTd[14].innerText;
             }
         }
     }
@@ -267,18 +317,19 @@ function readData() {
 
 function clearFormRides() {
     var form = document.getElementById('rides-form');
-    var inputs = form.getElementsByTagName('input');
-    var textarea = document.getElementById('description');
-    textarea.value = "";
-    for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
+    form.reset();
+    // var inputs = form.getElementsByTagName('input');
+    // var textarea = document.getElementById('description');
+    // textarea.value = "";
+    // for (let i = 0; i < inputs.length; i++) {
+    //     if (inputs[i].type == 'reset' || inputs[i].type == 'submit') {
 
-        } else if (inputs[i].type == 'checkbox') {
-            inputs[i].checked = false;
-        }
-        else {
-            inputs[i].value = "";
+    //     } else if (inputs[i].type == 'checkbox') {
+    //         inputs[i].checked = false;
+    //     }
+    //     else {
+    //         inputs[i].value = "";
 
-        }
-    }
+    //     }
+    // }
 }
