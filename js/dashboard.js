@@ -1,3 +1,9 @@
+var ele, tr;
+var currentUser;
+var userRides = new Array();
+
+window.onload = loadCurrentUser();
+
 // Control de los paneles
 function changeTab(tab, tabPane) {
     var links = document.getElementsByClassName("tab");
@@ -10,7 +16,17 @@ function changeTab(tab, tabPane) {
     document.getElementById(tab).classList.add("is-active");
     document.getElementById(tabPane).classList.remove("is-hidden");
 }
-var ele, tr;
+function loadCurrentUser() {
+    if (typeof (Storage !== "undefined")) {
+        var registro = JSON.parse(sessionStorage.getItem("currentUser"));
+        if (registro != null) {
+            currentUser = registro;
+            document.getElementById("user").innerText = currentUser["username"];
+        }
+
+    }
+
+}
 
 function viewRide() {
     ele = document.activeElement;
@@ -102,14 +118,14 @@ function deleteRide() {
     var link = document.getElementById('r-status');
     var myTab = document.getElementById('tabla-usr');
     var myTr = myTab.getElementsByTagName('tr');
-    
-    
-    
+
+
+
     for (let i = 0; i < myTr.length; i++) {
         if (myTr[i] == tr) {
             var myTd = myTr[i].getElementsByTagName('td');
             modal.classList.add("is-active");
-            mBody.innerHTML="<p>" +"Name: "+ myTd[0].innerText + "</p><br><p> Start: "+myTd[1].innerText+"</p><p> End: "+myTd[2].innerText+"</p>";
+            mBody.innerHTML = "<p>" + "Name: " + myTd[0].innerText + "</p><br><p> Start: " + myTd[1].innerText + "</p><p> End: " + myTd[2].innerText + "</p>";
         }
     }
 

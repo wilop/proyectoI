@@ -2,63 +2,47 @@
 // Retorna true sí la clave es valida.
 
 var users = new Array();
-var submit = document.getElementById("submit");
+var submit = document.getElementById("submitL");
+var form = document.getElementById("login-form");
 
 submit.addEventListener("click", function (e) {
-    var form = document.getElementById("login");
     e.preventDefault();
+
     if (validate()) {
         form.submit();
+        form.reset();
     }
-    alert('Firstname too short or to long!');
-
 });
 
 function validate() {
     var form = document.getElementById("login");
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    var user = { username: +"'" + username + "'", password: +"'" + password + "'" };
 
     cargarUsuarios();
 
-    if (users.length == 0) {
+    if (users == null || users.length == 0) {
+        alert("No users resgitered yet")
+        return false;
+    } else {
+        for (let i = 0; i < users.length; i++) {
+            var user = users[i];
+            if (user["username"] == username && user["password"] == password) {
+                saveUserToSessionStorage(user);
+                return true;
+
+            }
+        }
+        alert("User or Password incorrect!")
         return false;
     }
-    alert(users.length);
-    users.forEach(element => {
-        if (element["username"] !== username) {
-            alert(username);
-            alert(element["username"]);
-            return false;
-        }
-        if (element["password"] !== password) {
-            alert(element["password"]);
-            return false;
-        }
 
-    });
-    return true;
 }
 
-function validarClave() {
-    let clave = document.getElementById('clave').value;
-
-    if (clave.length <= 8 || clave.length >= 12) {
-        alert('La clave debe tener minimo 8 caracteres y máximo 12');
-        return false;
+function saveUserToSessionStorage(user) {
+    if (user != null) {
+        sessionStorage.setItem("currentUser", JSON.stringify(user));
     }
-    if (!clave.includes('/[0-9]/g')) {
-        alert('Debes incluir al menos un número');
-        return false;
-    }
-    if (!clave.includes('/[A-Z]/g')) {
-        alert('Debes incluir al menos una mayúscula');
-        return false;
-    }
-
-    retur; true;
-
 }
 
 function cargarUsuarios() {

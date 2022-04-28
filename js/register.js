@@ -1,11 +1,12 @@
 var users = new Array();
 var submit = document.getElementById("submitR");
+var form = document.getElementById("register");
 
 submit.addEventListener("click", function (e) {
-    var form = document.getElementById("register");
     e.preventDefault();
     if (validate()) {
         form.submit();
+        form.reset();
     }
 });
 
@@ -27,25 +28,32 @@ function validate() {
         alert('Lastname too short or too long!');
         return false;
     }
-    if (username.length <= 2 || username.length >= 12) {
-        alert('Username too short or too long!');
-        return false;
-    }
     if (phone.length != 8 || isNaN(phone)) {
         alert('Invalid phone');
         return false;
     }
-    if (password !== repassword) {
-        alert('Password does not match!');
+    if (username.length <= 2 || username.length >= 12) {
+        alert('Username too short or too long!');
         return false;
     }
     if (password.length < 8 || password.length > 12) {
         alert('Password too short or too long!');
         return false;
     }
-   
-    var user = { firstname: "'" + firstname + "'", lastname: "'" + lastname + "'", phone: "'" + phone + "'", username: +"'" + username + "'", password: +"'" + password + "'" };
+    if (password !== repassword) {
+        alert('Password does not match!');
+        return false;
+    }
+
+    var user = {
+        firstname: firstname,
+        lastname: lastname,
+        phone: phone,
+        username: username, password: password
+    };
+
     guardarUsuario(user);
+    console.log(user);
 
     return true;
 }
