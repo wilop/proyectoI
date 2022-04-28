@@ -26,12 +26,12 @@
     <nav class="level">
         <div class="level-item has-text-centered">
             <div>
-                <form class="box" action="dashboard.html">
+                <form id="login" class="box" action="dashboard.html">
 
                     <div class="field">
                         <label class="label">Username</label>
                         <p class="control has-icon has-icon-right">
-                            <input class="input is-success" type="text" placeholder="Type your username">
+                            <input id="username" class="input is-success" type="text" placeholder="Type your username">
                             <span class="icon is-small">
                                 <i class="fa fa-check"></i>
                             </span>
@@ -41,7 +41,8 @@
                     <div class="field">
                         <label class="label">Password</label>
                         <p class="control has-icon has-icon-right">
-                            <input class="input is-success" type="password" placeholder="Type your password">
+                            <input id="password" class="input is-success" type="password"
+                                placeholder="Type your password">
                             <span class="icon is-small">
                                 <i class="fa fa-warning"></i>
                             </span>
@@ -57,7 +58,7 @@
 
                         </p>
                         <p class="control">
-                            <input class="button font is-primary" type="submit" value="Login">
+                            <input id="submit" class="button font is-primary" type="submit" value="Login" onClick>
 
                         </p>
                     </div>
@@ -66,6 +67,9 @@
             </div>
         </div>
     </nav>
+    <script type="text/javascript" src="js/login.js">
+
+    </script>
 </body>
 
 </html>

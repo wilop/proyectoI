@@ -27,7 +27,7 @@
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
-        <form class="box" action="login.html">
+        <form id="register" class="box" action="login.html">
           <!-- <fieldset class=""> -->
           <div class="field">
             <label class="label">First Name</label>
@@ -53,8 +53,8 @@
           <div class="field">
             <label class="label">Phone</label>
             <p class="control has-icon has-icon-right">
-              <input class="input is-success" type="tel" pattern="[0-9]{4} [0-9]{4}" data-mask="0000 000" minlength="9"
-                maxlength="9" name="phone" value="" placeholder="Type your phone xxxx xxxx" id="phone" />
+              <input class="input is-success" type="tel" pattern="[0-9]{4}[0-9]{4}" data-mask="00000000" minlength="8"
+                maxlength="9" name="phone" value="" placeholder="Type your phone xxxxxxxx" id="phone" />
               <span class="icon is-small">
                 <i class="fa fa-phone"></i>
               </span>
@@ -84,7 +84,7 @@
             <label class="label">Repeat Password</label>
             <p class="control has-icon has-icon-right">
               <input class="input is-success" type="password" name="password" value=""
-                placeholder="Repeat your password" id="re password" />
+                placeholder="Repeat your password" id="repassword" />
               <span class="icon is-small">
                 <i class="fa fa-lock"></i>
               </span>
@@ -99,7 +99,7 @@
 
             </p>
             <p class="control">
-              <input class="button is-primary" type="submit" value="Login">
+              <input id="submitR" class="button is-primary" type="submit" value="Save">
 
             </p>
           </div>
@@ -108,6 +108,7 @@
       </div>
     </div>
   </nav>
+  <script type="text/javascript" src="js/register.js"> </script>
 </body>
 
 </html>
